@@ -1,1 +1,54 @@
 @import './base.css';
+@import "./iconfont.scss";
+
+img {
+  display: block;
+}
+
+ul,p,div {
+  padding: 0;
+  margin: 0;
+}
+.mar_t {
+  margin-top: 20px;
+}
+.mar_r {
+  margin-right: 20px;
+}
+.mar_b {
+  margin-bottom: 20px;
+}
+.mar_r {
+  margin-right: 20px;
+}
+.mar {
+  margin: 20px;
+}
+.pad_t {
+  padding-top: 20px;
+}
+.pad_r {
+  padding-right: 20px;
+}
+.pad_b {
+  padding-bottom: 20px;
+}
+.pad_r {
+  padding-right: 20px;
+}
+.pad {
+  padding: 20px;
+}
+.back_blue {
+  background: #2c5697;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+li {
+  list-style: none;
+}
+.flex{
+  display: flex;
+}
