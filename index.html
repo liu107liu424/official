@@ -18,7 +18,7 @@
   <script>
     function RootFun() {
       const view_width = document.documentElement.clientWidth;
-      let root = view_width < 768 ? "16px" : view_width / 640 + "px";
+      let root = view_width < 768 ? "2px" : view_width / 640 + "px";
       document.documentElement.style.fontSize = root;
     }
     window.addEventListener("load", RootFun);
