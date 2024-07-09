@@ -1,0 +1,77 @@
+.view {
+  padding: 10rem 40rem;
+
+  h1 {
+    font-weight: normal;
+  }
+  .title {
+    margin-bottom: 10rem;
+  }
+}
+.Recommend_view {
+  width: calc(100vw - 80rem);
+  flex-wrap: wrap;
+  padding: 0 10rem;
+  gap: 10rem;
+
+  .item {
+    flex: 1;
+    width: 25%;
+    background: #f4f4f4;
+    p {
+      font-size: 7rem;
+    }
+  }
+  .item_img {
+    width: 100%;
+    margin-bottom: 10rem;
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+  }
+  .item_img:hover {
+    transform: scale(1.1);
+  }
+}
+.productArr_view {
+  flex-wrap: wrap;
+  gap: 5rem;
+  .item {
+    width: calc(33% - 3rem);
+    position: relative;
+    overflow: hidden;
+    img {
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+    .ul {
+      transition: transform 3s ease;
+      position: absolute;
+      top: 40%;
+      left: 10%;
+      opacity: 0;
+      color: #fff;
+    }
+    .li:first-child {
+      font-size: 10rem;
+      font-weight: bold;
+    }
+  }
+  .item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(0px);
+  }
+
+  .item:hover .ul {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  .item:hover::before {
+    backdrop-filter: blur(10px);
+    transition: backdrop-filter 0.5s ease;
+  }
+}
+// YJ-Nord N100/BLP813加强版电池4890-5000mAh

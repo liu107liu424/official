@@ -17,6 +17,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'maxView',
+      redirect: '/Home',
       component: maxView,
       meta: { requiresDesktop: true, requiresMobile: false },
       children: [

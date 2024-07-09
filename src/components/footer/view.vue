@@ -5,7 +5,7 @@
       <p v-for="items in item.child">{{ items.text }}</p>
     </div>
   </div>
-  <div class="copyright">
+  <div class="copyright mar_b">
     Copyright © 2018-2023 深圳市诺希实业有限公司 All Rights Reserved.
     <a href="http://beian.miit.gov.cn/" target="_blank">
       粤ICP备2023113811号-2</a
