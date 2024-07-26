@@ -10,6 +10,7 @@ import course from '@/views/course/view.vue'
 import news from '@/views/news/view.vue'
 import product from '@/views/product/view.vue'
 import serve from '@/views/serve/view.vue'
+import goodsInfo from '@/views/goodsInfo/view.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +46,11 @@ const router = createRouter({
           path: '/serve',
           name: 'serve',
           component: serve
+        },
+        {
+          path: '/goodsInfo',
+          name: 'goodsInfo',
+          component: goodsInfo
         },
       ]
     },

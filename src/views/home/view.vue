@@ -2,16 +2,20 @@
   <div class="block text-center" m="t-4">
     <el-carousel trigger="click" height="calc(100vw / 2.3)">
       <el-carousel-item v-for="item in arr" :key="item">
-        <img :src="item" alt="" class="carousel-image" />
+        <img :src="item.url" alt="" class="carousel-image" />
       </el-carousel-item>
     </el-carousel>
   </div>
   <div class="Recommend view">
     <h1 class="title">推荐产品 | Recommend</h1>
     <div class="flex Recommend_view">
-      <div v-for="item in recommendArr" class="item pad">
-        <img :src="item.url" alt="" class="item_img" />
-        <p>{{ item.name }}</p>
+      <div
+        v-for="item in recommendArr"
+        class="item pad"
+        @click="goodsInfo(item.goodsId)"
+      >
+        <img :src="item.coverImg" alt="" class="item_img" />
+        <p>{{ item.goodsName }}</p>
         <p>{{ item.type }}</p>
       </div>
     </div>
@@ -35,30 +39,17 @@
 </style>
 <script lang="ts" setup>
 import { ref } from "vue";
-let arr = ref([
-  "https://www.nohon.cn/static/upload/image/20240702/1719909107223359.jpg",
-  "https://www.nohon.cn/static/upload/image/20230814/1692001291647253.jpg",
-]);
+import Api from "@/Api/api";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+let arr = ref([{ url: "", goodsId: "" }]);
 let recommendArr = ref([
   {
-    url: "https://www.nohon.cn/static/upload/image/20230804/1691138194541108.png",
-    name: "NX-P22充电宝",
-    type: "NX-P22",
-  },
-  {
-    url: "https://www.nohon.cn/static/upload/image/20230804/1691138194541108.png",
-    name: "NX-P22充电宝",
-    type: "NX-P22",
-  },
-  {
-    url: "https://www.nohon.cn/static/upload/image/20230804/1691138194541108.png",
-    name: "NX-P22充电宝",
-    type: "NX-P22",
-  },
-  {
-    url: "https://www.nohon.cn/static/upload/image/20230804/1691138194541108.png",
-    name: "NX-P22充电宝",
-    type: "NX-P22",
+    coverImg: "",
+    goodsName: "",
+    goodsId: "",
+    type: "",
   },
 ]);
 let productArr = ref([
@@ -87,6 +78,21 @@ let productArr = ref([
     list: ["手机电池", "手机电池", "手机电池", "手机电池", "手机电池"],
   },
 ]);
+maxImg();
+getGoods();
+function maxImg() {
+  Api.maxImg().then((res: any) => {
+    arr.value = res.data;
+  });
+}
+function getGoods() {
+  const obj = { size: 4, page: 0 };
+  Api.getGoods(obj).then((res) => (recommendArr.value = res.data));
+  console.log(recommendArr.value);
+}
+function goodsInfo(val: string) {
+  router.push({ path: "/goodsInfo", query: { id: val } });
+}
 </script>
 <style scoped>
 .demonstration {

@@ -1,23 +1,20 @@
 import axios from "axios";
-import Message from "@/utils/Message";
-// // 配置接口地址
-if (process.env.NODE_ENV === "development") {
-  //开发环境
-  axios.defaults.baseURL = "http://127.0.0.1:8080";
-} else {
-  //线上环境
-  axios.defaults.baseURL = "http://49.234.177.242:8080";
-}
+// import Message from "@/utils/Message";
+// 配置接口地址
+// if (process.env.NODE_ENV === "development") {
+//   //开发环境
+//   axios.defaults.baseURL = "http://127.0.0.1:8080";
+// } else {
+//   //线上环境
+axios.defaults.baseURL = "http://192.168.3.46:3000";
+// }
 axios.defaults.timeout = 5000;
 axios.defaults.headers["Content-Type"] = "application/json";
 // 添加请求拦截器
 axios.interceptors.request.use(
-  function (config, data) {
+  (config: any) => {
     // 在发送请求之前做些什么
-    let token = localStorage.getItem("token");
-    if (token) {
-      config.headers["Authorization"] = "Bearer " + token;
-    }
+
     return config;
   },
   function (error) {
@@ -33,7 +30,7 @@ axios.interceptors.response.use(
     // 对响应数据做点什么
     let { code, data } = res.data;
     if (code === 401) {
-      Message.e(data);
+      // Message.e(data);
       localStorage.clear();
     }
     return res.data;

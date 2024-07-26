@@ -9,10 +9,40 @@
     color: #fff;
     .li {
       border-bottom: 2px solid #2c5697;
+      position: relative;
+    }
+    .item_title {
+      // transform: translate(-50%, 0px);
+    }
+    .item_block {
+      position: absolute;
+      width: 400px;
+      height: 0px;
+      margin-top: 6rem;
+      background: red;
+      transition: height 0.3s ease;
+      transform: translate(-50%, 0px);
+    }
+    .li::before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -1px;
+      display: block;
+      background: #fff;
+      transition: width 0.3s ease;
+    }
+    .li:hover::before {
+      width: 100%;
     }
     .li:hover {
-      border-bottom: 2px solid #fff;
-      transition: transform 0.3s ease;
+      .item_block {
+        height: 100px;
+      }
     }
+  }
+  .sele::before {
+    width: 100% !important;
   }
 }
